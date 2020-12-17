@@ -11,8 +11,8 @@ This document contains the following details:
 - Description of the Topology
 - Access Policies
 - ELK Configuration
-  - Beats in Use
-  - Machines Being Monitored
+- Beats in Use
+- Machines Being Monitored
 - How to Use the Ansible Build
 
 
@@ -28,12 +28,12 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 The configuration details of each machine may be found below:
 
 | Name     |   Function  |   IP Address | Operating System |
-|----------|------------|----------------|--------------|
-| Jump Box | Gateway      | 10.0.0.1     | Linux |
-| DVWA 1   | Web Server | 10.0.0.7     | Linux  |
-| DVWA 2   | Web Server | 10.0.0.8     | Linux |
-| DVWA 3   | Web Server | 10.0.0.9     | Linux |
-| ELK          | Monitoring   | 10.1.0.4     | Linux |
+|----------|-------------|--------------|------------------|
+| Jump Box | Gateway     | 10.0.0.1     |      Linux       |
+| DVWA 1   | Web Server  | 10.0.0.7     |      Linux       |
+| DVWA 2   | Web Server  | 10.0.0.8     |      Linux       |
+| DVWA 3   | Web Server  | 10.0.0.9     |      Linux       |
+| ELK      | Monitoring  | 10.1.0.4     |      Linux       |
 
 ### Access Policies
 
@@ -79,6 +79,7 @@ Filebeat
 Metricbeat
 
 These Beats allow us to collect the following information from each machine:
+
 Filebeat: Filebeat detects changes to the filesystem. Specifically, we use it to collect Apache logs.
 Metricbeat: Metricbeat detects changes in system metrics, such as CPU usage. We use it to detect SSH login attempts, failed sudo escalations, and CPU/RAM statistics.
 

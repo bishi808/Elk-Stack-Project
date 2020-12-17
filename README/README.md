@@ -93,6 +93,7 @@ SSH into the control node and follow the steps below:
 	-Paste the playbook.yml in the “files” you just created 
 
 - Update the hosts file in ansible directory to include the public ip of each DVWA and ELK server
+		
 		[webservers]
 		10.0.0.7 ansible_python_interpreter=/usr/bin/python3
 		10.0.0.8 ansible_python_interpreter=/usr/bin/python3

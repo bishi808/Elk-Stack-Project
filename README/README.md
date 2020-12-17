@@ -89,10 +89,9 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 
 - Copy the playbook files to the Ansible control nodes
-	-Run cd /etc/ansible to get to ansible directory
-	-Create a file named “files”
-	-Paste the playbook.yml in the “files” you just created 
-
+- Run cd /etc/ansible to get to ansible directory
+- Create a file named “files”
+- Paste the playbook.yml in the “files” you just created 
 - Update the hosts file in ansible directory to include the public ip of each DVWA and ELK server
 		
 		[webservers]

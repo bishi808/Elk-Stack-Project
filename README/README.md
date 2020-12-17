@@ -7,32 +7,6 @@ https://drive.google.com/file/d/1K5t9xBTDusYbFMzFBbRNASMYjmDjqHww/view?usp=shari
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the filebeat-playbook.yml file may be used to install only certain pieces of it, such as Filebeat.
 
----
-- name: installing and launching filebeat
-  hosts: webservers
-  become: yes
-  tasks:
-
-  - name: download filebeat deb
-    command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.4.0-amd64.deb
-
-  - name: install filebeat deb
-    command: dpkg -i filebeat-7.4.0-amd64.deb
-
-  - name: drop in filebeat.yml
-    copy:
-      src: /etc/ansible/files/filebeat-config.yml
-      dest: /etc/filebeat/filebeat.yml
-
-  - name: enable and configure system module
-    command: filebeat modules enable system
-
-  - name: setup filebeat
-    command: filebeat setup
-
-  - name: start filebeat service
-    command: service filebeat start
-
 This document contains the following details:
 - Description of the Topology
 - Access Policies
@@ -73,11 +47,11 @@ A summary of the access policies in place can be found in the table below:
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box |                Yes           |  212.103.49.154   |
-| ELK          |                 No           |  10.1.0.0/16          |
-| DVWA 1   |                 No           | 10.0.0.0/16           |
-| DVWA 2   |                 No           | 10.0.0.0/16           |
-| DVWA 3   |                 No           | 10.0.0.0/16           |
+| Jump Box |           Yes       |  212.103.49.154      |
+| ELK      |           No        |  10.1.0.0/16         |
+| DVWA 1   |           No        |  10.0.0.0/16         |
+| DVWA 2   |           No        |  10.0.0.0/16         |
+| DVWA 3   |           No        |  10.0.0.0/16         |
 
 ### Elk Configuration
 
@@ -103,29 +77,29 @@ Web-3 10.0.0.9
 We have installed the following Beats on these machines:
 Filebeat
 Metricbeat
+
 These Beats allow us to collect the following information from each machine:
 Filebeat: Filebeat detects changes to the filesystem. Specifically, we use it to collect Apache logs.
 Metricbeat: Metricbeat detects changes in system metrics, such as CPU usage. We use it to detect SSH login attempts, failed sudo escalations, and CPU/RAM statistics.
-
-These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
+
 - Copy the playbook files to the Ansible control nodes
-Run cd /etc/ansible to get to ansible directory
-Create a file named “files”
-Paste the playbook.yml in the “files” you just created 
+	-Run cd /etc/ansible to get to ansible directory
+	-Create a file named “files”
+	-Paste the playbook.yml in the “files” you just created 
+
 - Update the hosts file in ansible directory to include the public ip of each DVWA and ELK server
 		[webservers]
-10.0.0.7 ansible_python_interpreter=/usr/bin/python3
-10.0.0.8 ansible_python_interpreter=/usr/bin/python3
-10.0.0.9 ansible_python_interpreter=/usr/bin/python3
+		10.0.0.7 ansible_python_interpreter=/usr/bin/python3
+		10.0.0.8 ansible_python_interpreter=/usr/bin/python3
+		10.0.0.9 ansible_python_interpreter=/usr/bin/python3
 
-[elkservers]
-10.1.0.4 ansible_python_interpreter=/usr/bin/python3
+		[elkservers]
+		10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 
-- Run the playbook  (ie ansible-playbook filebeat.yml) and then curl http://10.1.0.4 to check that the installation worked as expected.
+- Run the playbook (ie ansible-playbook filebeat.yml) and then curl http://10.1.0.4 to check that the installation worked as expected.
 

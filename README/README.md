@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![](READEME/images/ELK Diagram.png)
+![](READEME/Images/ELK Diagram.png)
 
 https://drive.google.com/file/d/1K5t9xBTDusYbFMzFBbRNASMYjmDjqHww/view?usp=sharing
 https://github.com/bishi808/Elk-Stack-Project/blob/main/README/Images/ELK%20Diagram.png
